@@ -4,20 +4,13 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/nnihal7/devsecops-project.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
 
-        stage('Build') {
+        stage('Build Application') {
             steps {
                 sh 'npm run build'
             }
@@ -25,8 +18,9 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Testing completed'
+                echo "Tests completed"
             }
         }
+
     }
 }
